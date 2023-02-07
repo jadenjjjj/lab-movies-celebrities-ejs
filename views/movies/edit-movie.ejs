@@ -1,0 +1,23 @@
+<form action="/movies/<%= movie._id %>/update" method="POST">
+    <label for="">Title:</label>
+    <input type="text" name="title" id="" value="<%= movie.title %>">
+    <label for="">Genre:</label>
+    <input type="text" name="genre" id="" value="<%= movie.genre %>">
+    <label for="">Plot:</label>
+    <input type="text" name="plot" id="" value="<%= movie.plot %>">
+    
+    <%-- array of celebrities in the cast --%>
+    <label for="">Cast:</label>
+    <select name="cast" multiple>
+      <% allCelebs.forEach(function(celeb) { %>
+        <% if (celeb.isInCast) { %>
+          <option value="<%= celeb._id %>" selected='selected'><%= celeb.name %></option>
+        <% } else { %>
+          <option value="<%= celeb._id %>"><%= celeb.name %></option>
+        <% } %>
+      <% }); %>
+    </select>
+  
+    <button type="submit">Save the changes</button>
+  </form>
+  
